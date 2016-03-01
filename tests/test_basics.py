@@ -2,8 +2,9 @@
 
 import unittest
 import re
+import os
 from moebot.wikipedia_client import client
-from moebot.keywords_algorithm import extract_text
+from moebot.text_matching import extract_text
 
 
 class WikipediaClientTest(unittest.TestCase):
@@ -16,6 +17,13 @@ class WikipediaClientTest(unittest.TestCase):
 class HTMLAnalyseTest(unittest.TestCase):
 
     def runTest(self):
-        with open("tests/test.html") as f:
-            result = extract_text(f.read())
-            assert result != []
+        response = client("https://zh.wikipedia.org/wiki/%E9%9C%A7%E9%9B%A8%E9%AD%94%E7%90%86%E6%B2%99")
+        result = extract_text(response)
+        assert result != [] and result is not None
+        with open("tests/test.txt", "w") as f2:
+            for i in result:
+                f2.write(i.encode("utf-8"))
+                f2.write(", ")
+
+    def tearDown(self):
+        os.remove("tests/test.txt")

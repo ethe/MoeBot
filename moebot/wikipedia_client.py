@@ -31,4 +31,4 @@ def client(url):
     for key in headers:
         request.add_header(key, headers[key])
     response = urllib2.urlopen(request)
-    return response
+    return response.read()
