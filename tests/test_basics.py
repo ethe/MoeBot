@@ -17,7 +17,11 @@ class WikipediaClientTest(unittest.TestCase):
 class HTMLAnalyseTest(unittest.TestCase):
 
     def runTest(self):
-        response = client("https://zh.wikipedia.org/wiki/%E9%9C%A7%E9%9B%A8%E9%AD%94%E7%90%86%E6%B2%99")
+        try:
+            f = open("tests/test.html")
+            response = f.read()
+        except:
+            response = client("https://zh.wikipedia.org/wiki/%E9%9C%A7%E9%9B%A8%E9%AD%94%E7%90%86%E6%B2%99")
         result = extract_text(response)
         assert result != [] and result is not None
         with open("tests/test.txt", "w") as f2:
