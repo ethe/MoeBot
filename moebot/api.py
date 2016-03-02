@@ -34,7 +34,7 @@ def login(site, username, password, token=None, set_cookie=None, times=1):
     response = urllib2.urlopen(request)
     response_content = json.loads(response.read())["login"]
     if response_content["result"] == "Success":
-        with open("/tmp/moebox.txt") as f:
+        with open("/tmp/moebox.txt", "w") as f:
             f.write(json.dumps(response_content))
         return response_content
     token = response_content["token"]
