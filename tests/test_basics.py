@@ -46,11 +46,12 @@ class CreateEntry(unittest.TestCase):
         print cookie
         csrftoken = token(api_url, cookie)
         print csrftoken
-        f1 = open("edittest.txt")
+        f1 = open("tests/edittest.txt")
         response = edit(api_url, csrftoken, cookie, "spellworks", f1.read())
-        with open("testcase2.txt", "w") as f:
+        with open("tests/testcase2.txt", "w") as f:
             f.write(response)
         print "Done"
+        f1.close()
 
     def tearDown(self):
         os.remove("tests/testcase2.txt")
