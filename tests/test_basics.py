@@ -6,7 +6,7 @@ import os
 from moebot.wikipedia_client import client
 from moebot.text_matching import extract_text
 from moebot.api import login, token, edit
-from moe.utils.constants import session_key, cookie_key
+from moebot.utils.constants import session_key, cookie_key
 
 
 class WikipediaClientTest(unittest.TestCase):
