@@ -17,8 +17,8 @@ def login(site, username, password, token=None, set_cookie=None, times=1):
     try:
         with open("/tmp/moebos.txt") as f:
             return json.loads(f.read())
-    except Exception, e:
-        raise e
+    except Exception:
+        pass
     headers = {}
     data = {
         "action": "login",
