@@ -5,7 +5,7 @@ import re
 import os
 from moebot.wikipedia_client import client
 from moebot.text_matching import extract_text
-from moebot.api import login, token, edit
+from moebot.api import login, token, edit, pick
 from moebot.utils.constants import session_key, cookie_key
 
 
@@ -37,6 +37,9 @@ class HTMLAnalyseTest(unittest.TestCase):
 
 class CreateEntry(unittest.TestCase):
 
+    def pick_test(self):
+        assert pick("https://zh.moegirl.org/index.php", "萌拟人化") != ""
+
     def runTest(self):
         api_url = "https://zh.moegirl.org/api.php"
         login_response = login(api_url, "Zeno", "0.618033")
@@ -52,6 +55,7 @@ class CreateEntry(unittest.TestCase):
             f.write(response)
         print "Done"
         f1.close()
+        self.pick_test()
 
     def tearDown(self):
         os.remove("tests/testcase2.txt")
