@@ -2,7 +2,6 @@
 
 import unittest
 import os
-from moebot.wikipedia_client import client
 from moebot.text_matching import extract_text
 from moebot.api import login, token, edit, pick
 from moebot.utils.constants import session_key, cookie_key
@@ -15,7 +14,7 @@ class HTMLAnalyseTest(unittest.TestCase):
             f = open("tests/test.html")
             response = f.read()
         except:
-            response = client("https://zh.wikipedia.org/wiki/%E9%9C%A7%E9%9B%A8%E9%AD%94%E7%90%86%E6%B2%99")
+            response = pick("https://zh.moegirl.org/index.php", "萌拟人化")
         result = extract_text(response)
         assert result != [] and result is not None
         with open("tests/test.txt", "w") as f2:
