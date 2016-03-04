@@ -35,8 +35,8 @@ class CreateEntry(unittest.TestCase):
         api_url = "https://zh.moegirl.org/api.php"
         login_response = login(api_url, "Zeno", "0.618033")
         print str(login_response)
-        cookie = "{}={}; {}={};".format(session_key["zh.moegirl.org"], "683472625f7ffb09188a7c3d7d2d82fe",\
-                                        cookie_key["zh.moegirl.org"], "c3b1a21c42930a3766c752b022dc8565")
+        cookie = "{}={}; {}={};".format(session_key["zh.moegirl.org"], login_response["sessionid"],\
+                                        cookie_key["zh.moegirl.org"], login_response["lgtoken"])
         print cookie
         csrftoken = token(api_url, cookie)
         print csrftoken
