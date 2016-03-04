@@ -41,7 +41,6 @@ def login(site, username, password, token=None, set_cookie=None, times=1):
     set_cookie = response.headers.get("set-cookie")
     if times == 0:
         raise IOError("Request timeout")
-    import ipdb; ipdb.set_trace()  # breakpoint 10f0070a //
     return login(site, username, password, token, set_cookie, times-1)
 
 
