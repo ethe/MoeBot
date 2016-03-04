@@ -15,7 +15,12 @@ class HTMLAnalyseTest(unittest.TestCase):
             response = f.read()
         except:
             response = pick("https://zh.moegirl.org/index.php", "萌拟人化")
-        result = extract_text(response.decode("utf-8"))
+        try:
+            response = response.decode("utf-8")
+        except:
+            pass
+        print response
+        result = extract_text(response)
         assert result != [] and result is not None
         with open("tests/test.txt", "w") as f2:
             for i in result:
