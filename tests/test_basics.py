@@ -1,19 +1,11 @@
 # -*- coding:utf-8 -*-
 
 import unittest
-import re
 import os
 from moebot.wikipedia_client import client
 from moebot.text_matching import extract_text
 from moebot.api import login, token, edit, pick
 from moebot.utils.constants import session_key, cookie_key
-
-
-class WikipediaClientTest(unittest.TestCase):
-
-    def runTest(self):
-        response = client("https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5")
-        assert re.match(r"^[\s\S]*Gotzehsing[\s\S]*$", response)
 
 
 class HTMLAnalyseTest(unittest.TestCase):
