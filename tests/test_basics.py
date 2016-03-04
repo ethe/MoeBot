@@ -15,7 +15,7 @@ class HTMLAnalyseTest(unittest.TestCase):
             response = f.read()
         except:
             response = pick("https://zh.moegirl.org/index.php", "萌拟人化")
-        result = extract_text(response)
+        result = extract_text(response.decode("utf-8"))
         assert result != [] and result is not None
         with open("tests/test.txt", "w") as f2:
             for i in result:
@@ -42,6 +42,7 @@ class CreateEntry(unittest.TestCase):
         print csrftoken
         f1 = open("tests/edittest.txt")
         response = edit(api_url, csrftoken, cookie, "spellworks", f1.read())
+        print response
         with open("tests/testcase2.txt", "w") as f:
             f.write(response)
         print "Done"
